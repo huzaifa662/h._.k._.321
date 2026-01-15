@@ -8,6 +8,19 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
+
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden; 
+    position: relative;
+}
+
         :root {
             --bg: #050505;
             --accent: #00f2ff;
@@ -82,7 +95,10 @@
         .nav-links a { margin-left: 25px; text-decoration: none; color: var(--text); font-size: 13px; font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        section { padding: 120px 10% 60px; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; }
+       section {
+    padding: 80px 5% 40px; 
+    min-height: auto;
+}
         
         .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; }
         .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin-bottom: 40px; }
@@ -108,19 +124,22 @@
 
         .section-title { font-size: 2rem; margin-bottom: 40px; border-left: 4px solid var(--accent); padding-left: 20px; text-transform: uppercase; letter-spacing: 2px;}
         
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
+     
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: 0.4s;
-        }
+.card {
+    width: 100%;
+    max-width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: 0.4s;
+}
         .card:hover { border-color: var(--accent); transform: translateY(-10px); }
         
         .icon-box {
@@ -166,10 +185,56 @@
         .copy-box:hover { background: var(--accent); color: #000; }
         .copy-box span { font-family: 'JetBrains Mono'; font-weight: 700; margin-right: 15px; }
 
-        @media (max-width: 768px) {
-            section { padding: 100px 5%; }
-            .hero h1 { font-size: 3rem; }
-        }
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack name above links */
+        padding: 10px;
+    }
+
+    .nav-links {
+        display: flex; /* Bring them back! */
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        margin: 0;
+        font-size: 11px; /* Smaller text for mobile */
+        letter-spacing: 1px;
+    }
+
+
+    .project-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .modal-content {
+        width: 95%; 
+    }
+}
+@media (max-width: 768px) {
+    .discord-card {
+        flex-direction: column; /* Stack icon, text, and buttons vertically */
+        gap: 15px;
+        padding: 20px;
+        width: 100%;
+    }
+
+    /* Make buttons full width on mobile so they are easy to tap with a thumb */
+    .discord-card div[style*="margin-left: auto"] {
+        margin-left: 0 !important;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .copy-btn, .discord-card a {
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+    }
+}
         
 #videoModal {
     display: flex; 
@@ -418,5 +483,4 @@ function closeModal() {
 }
     </script>
 </body>
-
 </html>
